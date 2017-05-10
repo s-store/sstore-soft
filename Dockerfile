@@ -18,7 +18,7 @@ RUN ssh-keygen -t dsa -q -P "" -f /root/.ssh/id_dsa && cat /root/.ssh/id_dsa.pub
 #COPY . /root/s-store
 #WORKDIR /root/s-store
 RUN cd /root && git clone https://github.com/s-store/sstore-soft.git s-store && cd s-store \
-RUN ant build && ant sstore-prepare -Dproject=votersstoreexample && ant sstore-prepare -Dproject=mimic2bigdawg
+&& ant build && ant sstore-prepare -Dproject=votersstoreexample && ant sstore-prepare -Dproject=mimic2bigdawg
 
 # run benchmark
 CMD service ssh restart && ant sstore-benchmark -Dproject=votersstoreexample
